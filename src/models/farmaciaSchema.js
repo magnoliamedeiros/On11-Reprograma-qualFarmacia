@@ -14,7 +14,19 @@ const farmaciaSchema = new Schema({
     auto: false,
     required: true
   },
-  telefone: {
+  endereco: {
+    type: String,
+    required: true
+  },
+  numero: {
+    type: String,
+    required: false
+  },
+  bairro: {
+    type: String,
+    required: true
+  },
+  telefoneDeContato: {
     type: String,
     required: false
   },
@@ -22,27 +34,34 @@ const farmaciaSchema = new Schema({
     type: String,
     required: false
   },
+  horarioDeFuncionamento: {
+    type: String,
+    required: true
+  },
   servicoDeEntrega: {
     type: Boolean,
-    required: false
+    required: true,
+    horarioDeEntrega: {
+      type: String,
+      required: true
+    }
   },
   plantao: {
     type: Boolean,
-    required: false
-  },
-  filial: {
-    type: String,
-    required: false
-  },
-  enderecoId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'endereco',
-    required: true
+    required: false,
+    dataDoPlantao: [{
+      type: Date,
+      required: true
+    }],
+    horarioDoPlantao: {
+      type: String,
+      required: true
+    }
   },
   criadoEm: {
     type: Date,
     required: true,
-    default: new Date
+    default: Date.now
   }
 })
 

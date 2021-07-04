@@ -1,10 +1,16 @@
 const express = require('express')
+const cors = require('cors')
+
 const app = express()
+
+app.use(cors())
+app.use(express.json())
 
 const index = require('./routes/index')
 const farmacias = require('./routes/')
 
-app.use(express.json())
+const db = require('./data/database')
+db.connect()
 
 // retorna um json formatado e tabulado de forma amigável
 app.set('json spaces', 4)
