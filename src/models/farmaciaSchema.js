@@ -51,7 +51,8 @@ const farmaciaSchema = new Schema({
     required: false,
     dataDoPlantao: [{
       type: Date,
-      required: true
+      required: true,
+      default: new Date().toLocaleDateString('pt-BR')
     }],
     horarioDoPlantao: {
       type: String,
@@ -59,9 +60,8 @@ const farmaciaSchema = new Schema({
     }
   },
   criadoEm: {
-    type: Date,
-    required: true,
-    default: Date.now
+    timestamps: true,
+    required: true
   }
 })
 
