@@ -7,8 +7,9 @@ app.use(cors())
 app.use(express.json())
 
 const index = require('./routes/index')
-const farmacias = require('./routes/')
+const farmacia = require('./routes/farmacia.routes')
 
+// conectando o mongo ao mongoose
 const db = require('./data/database')
 db.connect()
 
@@ -17,6 +18,6 @@ app.set('json spaces', 4)
 
 // definindo rota raiz
 app.use('/', index)
-app.use('/farmacias', farmacias)
+app.use('/farmacias', farmacia)
 
 module.exports = app

@@ -1,17 +1,11 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
 // estrutura do model (atributos da entidade)
-const farmaciaSchema = new Schema({
+const farmaciaSchema = new mongoose.Schema({
 
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    auto: true,
-    required: true
-  },
+  _id: mongoose.Schema.Types.ObjectId,
   nome: {
     type: String,
-    auto: false,
     required: true
   },
   endereco: {
@@ -19,52 +13,50 @@ const farmaciaSchema = new Schema({
     required: true
   },
   numero: {
-    type: String,
-    required: false
+    type: String
   },
   bairro: {
     type: String,
     required: true
   },
   telefoneDeContato: {
-    type: String,
-    required: false
+    type: String
   },
   whatsapp: {
-    type: String,
-    required: false
+    type: String
   },
-  horarioDeFuncionamento: {
-    type: String,
-    required: true
-  },
-  servicoDeEntrega: {
-    type: Boolean,
-    required: true,
-    horarioDeEntrega: {
-      type: String,
-      required: true
-    }
-  },
-  plantao: {
-    type: Boolean,
-    required: false,
-    dataDoPlantao: [{
-      type: Date,
-      required: true,
-      default: new Date().toLocaleDateString('pt-BR')
-    }],
-    horarioDoPlantao: {
-      type: String,
-      required: true
-    }
-  },
+  // horarioDeFuncionamento: {
+  //   type: String,
+  //   required: false
+  // },
+  // servicoDeEntrega: {
+  //   type: Boolean,
+  //   required: false
+  // },
+  // horarioDeEntrega: {
+  //   type: String,
+  //   required: false
+  // },
+  // plantao: {
+  //   type: Boolean,
+  //   required: false,
+  //   dataDoPlantao: [{
+  //     type: Date,
+  //     required: false,
+  //     default: new Date().toLocaleDateString('pt-BR')
+  //   }],
+  // },
+  // horarioDoPlantao: {
+  //   type: String,
+  //   required: false
+  // },
   criadoEm: {
-    timestamps: true,
-    required: true
+    type: Date,
+    required: true,
+    default: Date.now
   }
 })
-
+// console.log(farmaciaSchema)
 // atribuindo um schema a uma collection
 const farmaciaCollection = mongoose.model('farmacia', farmaciaSchema)
 
