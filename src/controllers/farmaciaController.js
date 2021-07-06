@@ -11,11 +11,12 @@ const create =  async (request, response) => {
     bairro: request.body.bairro,
     telefoneDeContato: request.body.telefoneDeContato,
     whatsapp: request.body.whatsapp,
+    plantao: request.body.plantao,
+    dataDoPlantao: request.body.dataDoPlantao,
     criadoEm: request.body.criadoEm
     // horarioDeFuncionamento: request.body.horarioDeFuncionamento,
     // servicoDeEntrega: request.body.servicoDeEntrega,
     // horarioDeEntrega: request.body.horarioDeEntrega,
-    // plantao: request.body.plantao,
     // horarioDoPlantao: request.body.horarioDoPlantao,
   })
 
@@ -23,7 +24,11 @@ const create =  async (request, response) => {
 
   if (farmaciaExistir) {
     return response.status(400).json({error: 'Farmácia já cadastrada'})
-}
+  }
+
+  if (nome == null || endereco == null || bairro == null ){
+    return response.status(400).json({error: 'Por favor, preencha todos os campos!'})
+  }
   
   try { 
       const novaFarmacia = await farmacia.save()

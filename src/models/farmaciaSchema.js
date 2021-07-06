@@ -6,17 +6,21 @@ const farmaciaSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   nome: {
     type: String,
+    trim: true,
     required: true
   },
   endereco: {
     type: String,
+    trim: true,
     required: true
   },
   numero: {
-    type: String
+    type: String,
+    trim: true
   },
   bairro: {
     type: String,
+    trim: true,
     required: true
   },
   telefoneDeContato: {
@@ -37,26 +41,20 @@ const farmaciaSchema = new mongoose.Schema({
   //   type: String,
   //   required: false
   // },
-  // plantao: {
-  //   type: Boolean,
-  //   required: false,
-  //   dataDoPlantao: [{
-  //     type: Date,
-  //     required: false,
-  //     default: new Date().toLocaleDateString('pt-BR')
-  //   }],
-  // },
+  plantao: {
+    type: Boolean,
+    dataDoPlantao: [{type: Date}],
+  },
   // horarioDoPlantao: {
   //   type: String,
   //   required: false
   // },
   criadoEm: {
     type: Date,
-    required: true,
     default: Date.now
   }
 })
-// console.log(farmaciaSchema)
+
 // atribuindo um schema a uma collection
 const farmaciaCollection = mongoose.model('farmacia', farmaciaSchema)
 
