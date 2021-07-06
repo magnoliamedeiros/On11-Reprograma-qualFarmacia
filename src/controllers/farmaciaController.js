@@ -23,11 +23,11 @@ const create = async (request, response) => {
   const farmaciaExistir = await Farmacia.findOne({nome: request.body.nome})
 
   if (farmaciaExistir) {
-    return response.status(400).json({error: 'Farmácia já cadastrada'})
+    return response.status(400).json({ error: 'Farmácia já cadastrada' })
   }
 
   if (nome == null || endereco == null || bairro == null ){
-    return response.status(400).json({error: 'Por favor, preencha todos os campos!'})
+    return response.status(400).json({ error: 'Por favor, preencha todos os campos!' })
   }
   
   try { 
