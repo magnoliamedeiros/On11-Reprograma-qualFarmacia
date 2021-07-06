@@ -19,24 +19,19 @@ const create = async (request, response) => {
     // horarioDeEntrega: request.body.horarioDeEntrega,
     // horarioDoPlantao: request.body.horarioDoPlantao,
   })
-
+  
   const farmaciaExistir = await Farmacia.findOne({nome: request.body.nome})
 
   if (farmaciaExistir) {
     return response.status(400).json({ error: 'Farmácia já cadastrada' })
   }
-
-  if (nome == null || endereco == null || bairro == null ){
-    return response.status(400).json({ error: 'Por favor, preencha todos os campos!' })
-  }
   
   try { 
     const novaFarmacia = await farmacia.save()
-    console.log(novaFarmacia)
     response.status(201).json([{
       message: 'Farmácia cadastrada com sucesso!',
       novaFarmacia
-      }])
+    }])
   } catch (error) {
     response.status(400).json({ message: error.message })
   }
