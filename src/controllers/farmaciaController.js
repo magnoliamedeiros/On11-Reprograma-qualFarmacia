@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Farmacia = require('../models/farmaciaSchema')
 
-const create =  async (request, response) => {
+const create = async (request, response) => {
 
   const farmacia = new Farmacia({
     _id:  new mongoose.Types.ObjectId(),
@@ -31,14 +31,27 @@ const create =  async (request, response) => {
   }
   
   try { 
-      const novaFarmacia = await farmacia.save()
-      console.log(novaFarmacia)
-      response.status(201).json(novaFarmacia)
-  } catch (err) {
-    response.status(400).json({ message: err.message })
+    const novaFarmacia = await farmacia.save()
+    console.log(novaFarmacia)
+    response.status(201).json([{
+      message: 'Farmácia cadastrada com sucesso!',
+      novaFarmacia
+      }])
+  } catch (error) {
+    response.status(400).json({ message: error.message })
+  }
+}
+
+const getAll = async (request, response) => {
+  try {
+    const farmacias = await Farmacia.find()
+    response.status(200).json(farmacias) 
+  } catch (error) {
+    response.status(500).json({ message: error.message })
   }
 }
 
 module.exports = {
-  create
+  create,
+  getAll
 }
