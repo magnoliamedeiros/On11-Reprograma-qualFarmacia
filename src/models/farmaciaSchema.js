@@ -41,10 +41,10 @@ const farmaciaSchema = new mongoose.Schema({
   //   type: String,
   //   required: false
   // },
-  plantao: {
-    type: Boolean,
-    dataDoPlantao: [{type: Date}],
-  },
+  // plantao: {
+  //   type: Boolean,
+  //   dataDoPlantao: [{type: Date}],
+  // },
   // horarioDoPlantao: {
   //   type: String,
   //   required: false
