@@ -9,10 +9,10 @@ router.get('/listar', farmaciaController.getAll)
 // Retorna uma farmácia por id
 router.get('/listar/:id', farmaciaController.getOne)
 
-// Adiciona uma farmacia
-router.post('/cadastrar', farmaciaController.create)
+// Cadastra uma farmacia
+router.post('/cadastrar', farmaciaController.cadastrarFarmacia)
 
 // Deleta uma farmácia
-router.delete('/deletar/:id', farmaciaController.deleteOne)
+router.delete('/deletar/:id', farmaciaController.deletarFarmacia)
 
 module.exports = router

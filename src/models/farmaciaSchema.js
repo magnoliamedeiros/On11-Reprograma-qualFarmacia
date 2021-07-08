@@ -3,7 +3,11 @@ const mongoose = require('mongoose')
 // estrutura do model (atributos da entidade)
 const farmaciaSchema = new mongoose.Schema({
 
-  _id: mongoose.Schema.Types.ObjectId,
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    auto: true,
+    required: true
+  },
   nome: {
     type: String,
     trim: true,

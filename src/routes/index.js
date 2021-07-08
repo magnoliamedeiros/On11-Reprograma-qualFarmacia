@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/', (request, response)=>{
   response.status(200).json({
     title: "API Qual Farmácia - Projeto Final { reprograma }",
-    version: "1.0.0",
+    version: "1.0.1",
     message: "Bem vindas(os) a Qual Farmácia"
   })
 })
