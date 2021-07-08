@@ -64,8 +64,14 @@ const deletarFarmacia = async (request, response) => {
 
 // Retorna todas as farmácias
 const getAll = async (request, response) => {
-  const farmacias = await Farmacia.find()
-  response.json(farmacias)
+  try {
+    const farmacias = await Farmacia.find()
+    response.status(200).json(farmacias) 
+  } catch (err) {
+    response.status(500).json({
+      error: err.message
+    })
+  }
 }
 
 // Retorna uma farmácia pelo id
