@@ -26,9 +26,9 @@ const farmaciaSchema = new mongoose.Schema({
   telefoneDeContato: {
     type: String
   },
-  whatsapp: {
-    type: String
-  },
+  // whatsapp: {
+  //   type: String
+  // },
   // horarioDeFuncionamento: {
   //   type: String,
   //   required: false
