@@ -1,37 +1,6 @@
 const mongoose = require("mongoose")
 const Farmacia = require("../models/farmaciaSchema")
 
-// Retorna todas as farmácias
-const getAll = async (request, response) => {
-  try {
-    const farmacias = await Farmacia.find()
-    response.status(200).json(farmacias) 
-  } catch (error) {
-    response.status(500).json({
-      message: error.message
-    })
-  }
-}
-
-// Retorna uma farmácia pelo id
-const getOne = async (request, response) => {
-  try {
-
-    const farmacia = await Farmacia.findById(request.params.id)
-    
-    if(farmacia == null) {
-      return response.status(404).json({
-        message: "Farmácia não encontrada!"
-      })
-    }
-    response.json(farmacia)
-  } catch (err) {
-    res.status(500).json({
-      error: err.message
-    })
-  }
-}
-
 // Cadastra uma farmácia
 const cadastrarFarmacia = async (request, response) => {
 
@@ -92,6 +61,39 @@ const deletarFarmacia = async (request, response) => {
     })
   }
 }
+
+// Retorna todas as farmácias
+const getAll = async (request, response) => {
+  try {
+    const farmacias = await Farmacia.find()
+    response.status(200).json(farmacias) 
+  } catch (error) {
+    response.status(500).json({
+      message: error.message
+    })
+  }
+}
+
+// Retorna uma farmácia pelo id
+const getOne = async (request, response) => {
+  try {
+
+    const farmacia = await Farmacia.findById(request.params.id)
+    
+    if(farmacia == null) {
+      return response.status(404).json({
+        message: "Farmácia não encontrada!"
+      })
+    }
+    response.json(farmacia)
+  } catch (err) {
+    res.status(500).json({
+      error: err.message
+    })
+  }
+}
+
+
 
 module.exports = {
   getAll,
