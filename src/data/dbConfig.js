@@ -1,19 +1,20 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+const mongoose = require("mongoose")
+const dotenv = require("dotenv")
+
 dotenv.config()
 
 const connect = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI, {
-            keepAlive: true,
+            // keepAlive: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
             useCreateIndex: true,
         })
-    console.log('Database connected!')
+    console.log("Database connected!")
     } catch (error) {
-        console.error('Could not connect!', error)
+        console.error("Could not connect!", error)
     }
 }
 

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
-// estrutura do model (atributos da entidade)
+// Estrutura do model (atributos da entidade)
 const farmaciaSchema = new mongoose.Schema({
 
   _id: {
@@ -59,7 +59,7 @@ const farmaciaSchema = new mongoose.Schema({
   }
 })
 
-// atribuindo um schema a uma collection
-const farmaciaCollection = mongoose.model('farmacia', farmaciaSchema)
+// Atribuindo um Schema a uma Collection
+const farmaciaCollection = mongoose.model("farmacia", farmaciaSchema)
 
 module.exports = farmaciaCollection
