@@ -2,7 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const db = require("./data/dbConfig")
 const index = require("./routes/index")
-const farmacia = require("./routes/farmacia.routes")
+const farmacia = require("./routes/farmaciaRoutes")
 
 // Conectando o banco
 db.connect()

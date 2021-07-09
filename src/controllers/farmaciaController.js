@@ -75,6 +75,24 @@ const getById = async (request, response) => {
   }
 }
 
+// Retorna uma farmácia por nome
+const getByNome = async (request, response) => {
+  try {
+    const farmacia = await Farmacia.find({nome: request.query.nome})
+    if (farmacia == null) {
+      return response.status(404).json({
+        message: "Farmácia não encontrada!"
+      })
+    }
+    response.status(200).json(farmacia)
+  } catch (err) {
+    response.status(500).json({
+      error: err.message
+    })
+  }
+}
+
+// Atualiza uma farmácia
 const atualizarFarmacia = async (request, response) => {
   try {
     const farmacia = await Farmacia.findById({ _id: request.params.id })
