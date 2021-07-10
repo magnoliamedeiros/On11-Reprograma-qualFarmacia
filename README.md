@@ -37,12 +37,11 @@ Qual Farmácia é uma api para gerenciamento de informações sobre as farmácia
 
 ```js
 📁 projeto-final-qualFarmacia
-├──  .env
-├──  .env.example
-├──  .gitignore
-├── 📁 node_modules
-├──  package.json
-├──  package-lock.json
+├── .env
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
 ├── README.md
 ├── server.js
 └── 📁 src
