@@ -28,7 +28,6 @@ const enderecoSchema = new mongoose.Schema({
   }
 })
 
-// Atribuindo um Schema a uma Collection
 const enderecoCollection = mongoose.model("endereco", enderecoSchema)
 
 module.exports = enderecoCollection

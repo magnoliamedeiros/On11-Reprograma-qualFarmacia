@@ -1,17 +1,6 @@
-/**
- * _id: autogerado e obrigatório
- * nome: texto e obrigatório
- * endereco: referencia do endereco cadastrado previamente e obrigatório
- * telefoneDeContato: texto e opcional
- * whatsapp: texto e opcional
- * criadoEm: data gerada automaticamente e obrigatório
- */
-
 const mongoose = require("mongoose")
 
-// Estrutura do model (atributos da entidade)
 const farmaciaSchema = new mongoose.Schema({
-
   _id: mongoose.Schema.Types.ObjectId,
   nome: {
     type: String,
@@ -34,22 +23,6 @@ const farmaciaSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  // horarioDeFuncionamento: {
-  //   type: String
-  // },
-  // servicoDeEntrega: {
-  //   type: Boolean
-  // },
-  // horarioDeEntrega: {
-  //   type: String
-  // },
-  // plantao: {
-  //   type: Boolean,
-  //   dataDoPlantao: [{type: Date}],
-  // },
-  // horarioDoPlantao: {
-  //   type: String
-  // },
   criadoEm: {
     type: Date,
     required: true,
@@ -57,7 +30,6 @@ const farmaciaSchema = new mongoose.Schema({
   }
 })
 
-// Atribuindo um Schema a uma Collection
 const farmaciaCollection = mongoose.model("farmacia", farmaciaSchema)
 
 module.exports = farmaciaCollection
