@@ -10,7 +10,9 @@ router.get("/", farmaciaController.mostrarFarmacias)
 router.get("/:id", farmaciaController.getById)
 
 // Retorna uma farmácia por bairro = centro
-router.get("/bairro/centro", farmaciaController.mostrarFarmaciasPorBairro)
+router.get("/bairro/centro", farmaciaController.mostrarFarmaciasCentro)
+// Retorna uma farmácia por bairro = centro
+router.get("/bairro/jk", farmaciaController.mostrarFarmaciasJK)
 
 // Cadastra uma farmacia
 router.post("/cadastrar", farmaciaController.cadastrarFarmacia)

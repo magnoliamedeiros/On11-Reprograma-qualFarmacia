@@ -16,9 +16,7 @@ const cadastrarFarmacia = async (request, response) => {
   })
 
   // Não permitir o cadastro de uma farmácia que já existe
-  const farmaciaJaExiste = await FarmaciaSchema.findOne({
-    nome: request.body.nome
-  })
+  const farmaciaJaExiste = await FarmaciaSchema.findOne({ nome: request.body.nome })
 
   if (farmaciaJaExiste) {
     return response.status(400).json({
@@ -90,10 +88,24 @@ const getByNome = async (request, response) => {
 }
 
 // Retorna uma farmácia por bairro = centro
-const mostrarFarmaciasPorBairro = async (request, response) => {
+const mostrarFarmaciasCentro = async (request, response) => {
   try {
     const farmacias = await FarmaciaSchema.find().populate("endereco")
     const farmaciasFiltradas = farmacias.filter(farmacia => farmacia.endereco.bairro == "centro")
+
+    response.status(200).json(farmaciasFiltradas)
+  } catch (err) {
+    response.status(500).json({
+      error: err.message
+    })
+  }
+}
+
+// Retorna uma farmácia por bairro = jk
+const mostrarFarmaciasJK = async (request, response) => {
+  try {
+    const farmacias = await FarmaciaSchema.find().populate("endereco")
+    const farmaciasFiltradas = farmacias.filter(farmacia => farmacia.endereco.bairro == "jk")
 
     response.status(200).json(farmaciasFiltradas)
   } catch (err) {
@@ -161,8 +173,8 @@ module.exports = {
   cadastrarFarmacia,
   mostrarFarmacias,
   getById,
-  getByNome,
-  mostrarFarmaciasPorBairro,
+  mostrarFarmaciasCentro,
+  mostrarFarmaciasJK,
   atualizarFarmacia,
   deletarFarmacia
 }
