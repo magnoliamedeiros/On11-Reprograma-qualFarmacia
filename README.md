@@ -33,9 +33,7 @@ Qual Farmácia é uma api para gerenciamento de informações sobre as farmácia
 
 ## Arquitetura MVC
 
- 
-
-```js
+```json
 📁 projeto-final-qualFarmacia
 ├── .env
 ├── .env.example
@@ -59,3 +57,4 @@ Qual Farmácia é uma api para gerenciamento de informações sobre as farmácia
         ├── farmaciaRoutes.js
         └── index.js
 ```
+

@@ -124,8 +124,10 @@ const mostrarFarmaciasJK = async (request, response) => {
 const atualizarFarmacia = async (request, response) => {
   try {
     const farmacia = await FarmaciaSchema.findById(request.params.id)
-    if (farmacia == null) {
-      return response.status(404).json({ message: 'Farmácia não encontrada!' })
+    if (farmacia == null || farmacia == '') {
+      return response.status(404).json({
+        message: 'Farmácia não encontrada!'
+      })
     }
     if (request.body.nome != null) {
       farmacia.nome = request.body.nome
@@ -162,13 +164,11 @@ const deletarFarmacia = async (request, response) => {
       })
     }
     await farmacia.remove()
-    response.json({
+    response.status(204).json({
       success: 'Farmácia deletada com sucesso!'
     })
   } catch (err) {
-    response.status(500).json({
-      error: err.message
-    })
+    response.status(500).json({ error: err.message })
   }
 }
 
@@ -176,6 +176,7 @@ module.exports = {
   cadastrarFarmacia,
   mostrarFarmacias,
   getById,
+  getByNome,
   mostrarFarmaciasCentro,
   mostrarFarmaciasJK,
   atualizarFarmacia,
