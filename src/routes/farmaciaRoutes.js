@@ -4,10 +4,13 @@ const router = express.Router()
 const farmaciaController = require("../controllers/farmaciaController")
 
 // Retorna todas as farmacias
-router.get("/", farmaciaController.getAll)
+router.get("/", farmaciaController.mostrarFarmacias)
 
 // Retorna uma farmácia por id
 router.get("/:id", farmaciaController.getById)
+
+// Retorna uma farmácia por bairro = centro
+router.get("/centro", farmaciaController.mostrarFarmaciasPorBairro)
 
 // Cadastra uma farmacia
 router.post("/cadastrar", farmaciaController.cadastrarFarmacia)
