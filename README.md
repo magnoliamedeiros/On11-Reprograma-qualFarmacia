@@ -1,4 +1,8 @@
-# On11-reprograma-qualFarmacia
+# Projeto Final - Reprograma
+
+## API Qual Farmácia
+
+Desenvolvimento por: Magnólia Medeiros
 
 ## A Motivação
 
@@ -16,14 +20,16 @@ Atualmente para ter acesso a essas informações citadas acima, temos as seguint
 
 ## Sobre o projeto
 
-Qual Farmácia é uma api para gerenciamento de informações sobre as farmácias e drogarias do município de Currais Novos-RN, com o objetivo de disponibilizar o acesso rápido as informações a estes estabelecimentos.
+A *API Qual Farmácia* foi pensada para ajudar a população do município de Currais Novos-RN a encontrar informações sobre as farmácias e drogarias locais de forma rápida, acessível e centralizada.
+
+## Tecnologias utilizadas
 
 | Ferramenta      | Descrição                                                    |
 | --------------- | ------------------------------------------------------------ |
 | javascript      | Linguagem de programação utilizada                           |
 | npm             | Gerenciador de pacotes                                       |
-| node.js         | Ambiente de execução Javascript *server-side*                |
-| express         | Framework para Node.js                                       |
+| node.js         | Ambiente de execução javascript *server-side*                |
+| express         | Framework para node.js                                       |
 | dotenv          | Dependência que protege os dados sensíveis do projeto        |
 | nodemon         | Dependência que observa as atualizações realizadas e executa o servidor automaticamente |
 | mongoose        | Dependência que interage com o MongoDB para a conexão da database, criação do model e collections |
@@ -57,4 +63,101 @@ Qual Farmácia é uma api para gerenciamento de informações sobre as farmácia
         ├── farmaciaRoutes.js
         └── index.js
 ```
+
+## Com utilizar
+
+Os usuários devem preceder todas as chamadas de recursos com este URL base:
+
+[`https://qualfarmacia-backend.herokuapp.com/`](https://qualfarmacia-backend.herokuapp.com/)
+
+## Rotas
+
+### Farmácias
+
+| Método HTTP | endpoint                         | Descrição                                               |
+| ----------- | -------------------------------- | ------------------------------------------------------- |
+| GET         | /farmacias                       | Retorna toda as farmácias cadastradas                   |
+| GET         | /farmacias/:id                   | Retorna uma farmácia específica por id                  |
+| GET         | /farmacias/bairro/nome-do-bairro | Retorna as farmácias que existem no bairro especificado |
+| POST        | /farmacias/cadastrar             | Cadastra uma nova farmácia                              |
+| PATCH       | /farmacias/atualizar/:id         | Atualiza uma farmácia especificada pelo id              |
+| DELETE      | /farmacias/deletar/:id           | Deleta uma farmácia especificada pelo id                |
+
+## Endereços
+
+| Método HTTP | endpoint                 | Descrição                                                    |
+| ----------- | ------------------------ | ------------------------------------------------------------ |
+| GET         | /endereços               | Retorna todos os endereços cadastrados                       |
+| GET         | /endereços/:id           | Retorna a ou as farmácias existentes no endereço informado pelo id |
+| POST        | /endereços/cadastrar     | Cadastra um novo endereço                                    |
+| PATCH       | /endereços/atualizar/:id | Atualiza um endereço especificado pelo id                    |
+| DELETE      | /endereços/deletar/:id   | Deleta um endereço especificado pelo id                      |
+
+## Bando de dados MongoDB
+
+### Dados da Collection Farmácia
+
+- id: autogerado e obrigatório
+- nome: texto e obrigatório
+- Telefone de contato: texto e obrigatório
+- Whatsapp: texto
+- Endereco: faz referência a collection 'endereco'
+- Número: texto
+- Criado em: data e obrigatório
+
+#### JSON retornado:
+
+```json
+  "success": "Farmácias listadas com sucesso!",
+  "farmacias": [
+    {
+      "_id": "60e9dee7138ce87835f8c135",
+      "nome": "frei damião ii",
+      "telefoneDeContato": "3431-1356",
+      "endereco": {
+        "_id": "60e9de87138ce87835f8c131",
+        "logradouro": "laurentino bezerra",
+        "tipoDeLogradouro": "rua",
+        "bairro": "centro",
+        "criadoEm": "2021-07-10T17:53:11.575Z",
+        "__v": 0
+      },
+      "numero": "105",
+      "criadoEm": "2021-07-10T17:54:47.225Z",
+      "__v": 0
+    }
+```
+
+### Dados da Collection Endereço
+
+- id: autogerado e obrigatório
+- Logradouro: texto e obrigatório
+- Tipo de Logradouro: texto e obrigatório
+- Bairro: texto e obrigatório
+- Endereco: faz referência a collection 'endereco'
+- Criado em: data e obrigatório
+
+#### JSON retornado:
+
+```json
+{
+  "success": "Endereço cadastrado com sucesso!",
+  "novoEndereco": {
+    "_id": "60e9e219c1e9be7a22aee37b",
+    "logradouro": "13 de maio",
+    "tipoDeLogradouro": "avenida",
+    "bairro": "paizinho maria",
+    "criadoEm": "2021-07-10T18:08:25.420Z",
+    "__v": 0
+  }
+}
+```
+
+## Implementações futuras
+
+- Filtrar farmácias que estão de plantão
+- Filtrar farmácias com serviço de entrega
+- Exibir horário de funcionamento
+- Autenticação de rotas
+- Desenvolvimento de interface web
 
