@@ -4,25 +4,25 @@
 
 Desenvolvimento por: Magnólia Medeiros
 
-## A Motivação
+## 🤩 A Motivação
 
-Com o novo cenário do avanço do Covid-19 no Brasil, onde a maioria das cidades brasileiras restringem o funcionamento do comércio para conter aglomerações e, consequentemente, diminuir a proliferação do vírus, a rotina da população foi alterada por várias mudanças nesse contexto, uma delas é a forma de consumir produtos e serviços.
+Com o novo cenário do avanço do Covid-19 no Brasil, onde a maioria das cidades brasileiras restringem o funcionamento do comércio para conter aglomerações e, consequentemente, diminuir a proliferação do vírus. Nesse contextoa a rotina da população foi alterada por várias mudanças, uma delas foi a forma de consumir produtos e serviços.
 
-Sabemos e vivenciamos a oferta cada vez maior de produtos e serviços através de canais digitais praticamente em todos os segmentos de mercado. E pensando nisso, a finalidade deste projeto é construir o *backend* de uma futura aplicação que pretende automatizar, simplificar e facilitar o nível de esforço requerido por usuários de farmácias e/ou drogarias na busca por informações básicas, tais como: existe farmácia no meu bairro? qual o endereço e/ou telefone? a farmácia disponibiliza serviço de entrega em domicílio?, a farmácia de plantão? entre outras informações.
+Sabemos e vivenciamos a oferta cada vez maior de produtos e serviços através de canais digitais praticamente em todos os segmentos de mercado. E pensando nisso, a finalidade deste projeto é construir o *backend* de uma futura aplicação que pretende automatizar, simplificar e facilitar o nível de esforço requerido por usuários de farmácias e/ou drogarias do munícipio de **Currais Novos-RN** na busca por informações básicas, tais como: existe farmácia no meu bairro? qual o endereço e/ou telefone? a farmácia disponibiliza serviço de entrega em domicílio?, a farmácia de plantão? entre outras informações.
 
-Atualmente para ter acesso a essas informações citadas acima, temos as seguintes opções disponíveis:
+Atualmente para ter acesso as informações citadas acima, temos as seguintes opções disponíveis:
 
 - Pesquisa no Google
 - Pesquisa em Redes Sociais
-- Blog local que disponibiliza um print de uma planilha que contém a relação de todas as farmácias que estão de plantão no mês
+- Blog local que disponibiliza um *print* de uma planilha que contém a relação de todas as farmácias que estão de plantão no mês
 - Canal de TV a Cabo local, que vincula diariamente em sua programação as farmácias que estão de plantão no dia
 - Rádios locais
 
-## Sobre o projeto
+## 📚 Sobre o Projeto
 
-A *API Qual Farmácia* foi pensada para ajudar a população do município de Currais Novos-RN a encontrar informações sobre as farmácias e drogarias locais de forma rápida, acessível e centralizada.
+A *API Qual Farmácia* foi pensada para ajudar a população do município de **Currais Novos-RN** a encontrar informações sobre as farmácias e drogarias locais de forma centralizada e rápida, tornando o processo natural e acessível.
 
-## Tecnologias utilizadas
+## 🚀 Tecnologias Utilizadas
 
 | Ferramenta      | Descrição                                                    |
 | --------------- | ------------------------------------------------------------ |
@@ -37,7 +37,7 @@ A *API Qual Farmácia* foi pensada para ajudar a população do município de Cu
 | MongoDB Compass | Interface gráfica para verificar se os dados foram persistidos |
 | Insomnia        | Interface gráfica para realizar os testes de API's REST      |
 
-## Arquitetura MVC
+## ⚙️ Arquitetura MVC
 
 ```json
 📁 projeto-final-qualFarmacia
@@ -64,9 +64,31 @@ A *API Qual Farmácia* foi pensada para ajudar a população do município de Cu
         └── index.js
 ```
 
-## Com utilizar
+## ⏱ Como Executar
 
-Os usuários devem preceder todas as chamadas de recursos com este URL base:
+#### Primeiro, execute o servidor de desenvolvimento
+
+```bash
+# Clonar o repositório:
+$ git clone https://github.com/magnoliamedeiros/On11-reprograma-qualFarmacia.git
+
+# Entrar na pasta do projeto:
+$ cd On11-reprograma-qualFarmacia
+
+# Instalar as dependências necessárias:
+$ npm i
+
+# Verificar o arquivo .env.example:
+$ vim .env.example
+
+# Iniciar o servidor em modo desenvolvimento:
+$ npm run dev
+```
+#### Depois, para ver o resultado localmente abra o endereço http://localhost:3030 no seu navegador
+
+## 🌐 Link do Projeto em Produção 
+
+#### Os usuários devem preceder todas as chamadas de recursos com este URL base:
 
 [`https://qualfarmacia-backend.herokuapp.com/`](https://qualfarmacia-backend.herokuapp.com/)
 
