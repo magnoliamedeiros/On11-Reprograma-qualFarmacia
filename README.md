@@ -2,7 +2,8 @@
 
 ## API Qual Farmácia
 
-Desenvolvimento por: Magnólia Medeiros
+#### Desenvolvimento por: Magnólia Medeiros
+#### Apresentação: [`slides-da-apresentacao-reprograma`](https://bit.ly/slides-apresentacao-reprograma)
 
 ## 🤩 A Motivação
 
