@@ -3,6 +3,7 @@ const FarmaciaSchema = require('../models/farmaciaSchema')
 
 // Cadastra uma farmácia
 const cadastrarFarmacia = async (request, response) => {
+  
   // Criando objeto Farmácia
   const farmacia = new FarmaciaSchema({
     _id: new mongoose.Types.ObjectId(),
