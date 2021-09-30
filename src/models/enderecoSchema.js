@@ -9,12 +9,12 @@ const enderecoSchema = new mongoose.Schema({
     trim: true,
     required: true
   },
-  tipoDeLogradouro: {
-    type: String,
-    lowercase: true,
-    trim: true,
-    required: true
-  },
+  // tipoDeLogradouro: {
+  //   type: String,
+  //   lowercase: true,
+  //   trim: true,
+  //   required: true
+  // },
   bairro: {
     type: String,
     lowercase: true,
