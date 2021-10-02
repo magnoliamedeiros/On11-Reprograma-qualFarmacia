@@ -12,6 +12,7 @@ const cadastrarFarmacia = async (request, response) => {
     whatsapp: request.body.whatsapp,
     endereco: request.body.endereco,
     numero: request.body.numero,
+    plantao: request.body.plantao,
     criadoEm: request.body.criadoEm
   })
 

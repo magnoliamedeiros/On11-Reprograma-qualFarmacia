@@ -6,7 +6,6 @@ const cadastrarEndereco = async (request, response) => {
   const endereco = new EnderecoSchema({
     _id: new mongoose.Types.ObjectId(),
     logradouro: request.body.logradouro,
-    // tipoDeLogradouro: request.body.tipoDeLogradouro,
     numero: request.body.numero,
     bairro: request.body.bairro,
     criadoEm: request.body.criadoEm
