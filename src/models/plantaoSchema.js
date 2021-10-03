@@ -7,14 +7,14 @@ const plantaoSchema = new mongoose.Schema({
     required: true,
     ref: "farmacia"
   }],
-  dataPlantao: [{
+  dataPlantao: {
     dataInicioPlantao: {type: String},
     dataTerminoPlantao: {type: String}
-  }],
-  horarioPlantao: [{
+  },
+  horarioPlantao: {
     horaInicioPlantao: {type: String},
     horaTerminoPlantao: {type: String}
-  }],
+  },
   criadoEm: {
     type: Date,
     required: true,
