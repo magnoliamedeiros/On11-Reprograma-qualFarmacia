@@ -46,7 +46,11 @@ const cadastrarFarmacia = async (request, response) => {
 // Retorna todas as farmácias cadastradas
 const mostrarFarmacias = async (request, response) => {
   try {
-    const farmacias = await FarmaciaSchema.find().populate('endereco')
+    const farmacias = await FarmaciaSchema.find().
+    populate('endereco').
+    populate('plantao').
+    exec()
+
     response.status(200).json({
       success: 'Farmácias listadas com sucesso!',
       farmacias
