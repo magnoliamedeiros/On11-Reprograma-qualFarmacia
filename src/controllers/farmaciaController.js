@@ -65,7 +65,7 @@ const mostrarFarmacias = async (request, response) => {
 // Retorna uma farmácia pelo id
 const getById = async (request, response) => {
   try {
-    const farmacia = await FarmaciaSchema.findById({ _id: request.params.id })
+    const farmacia = await FarmaciaSchema.findById({ _id: request.params.id }).populate('endereco')
     if (farmacia == null) {
       return response.status(404).json({
         message: 'Farmácia não encontrada!'
