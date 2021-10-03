@@ -2,11 +2,11 @@ const mongoose = require("mongoose")
 
 const plantaoSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  farmacia: [{
+  farmacia: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "farmacia"
-  }],
+  },
   dataPlantao: {
     dataInicioPlantao: {type: String},
     dataTerminoPlantao: {type: String}
