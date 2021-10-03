@@ -6,7 +6,7 @@ const enderecoSchema = new Schema({
   _id: Schema.Types.ObjectId,
   logradouro: { type: String, lowercase: true, trim: true, required: true },
   bairro: { type: String, lowercase: true, trim: true, required: true },
-  criadoEm: { type: Date, required: true, default: Date.now }
+  criadoEm: { type: Date, required: true, default: Date.now() }
 
 })
 
