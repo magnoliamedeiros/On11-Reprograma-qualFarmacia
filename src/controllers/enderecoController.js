@@ -3,10 +3,10 @@ const EnderecoSchema = require("../models/enderecoSchema")
 
 // Cadastra um endereço
 const cadastrarEndereco = async (request, response) => {
+  
   const endereco = new EnderecoSchema({
     _id: new mongoose.Types.ObjectId(),
     logradouro: request.body.logradouro,
-    numero: request.body.numero,
     bairro: request.body.bairro,
     criadoEm: request.body.criadoEm
   })
@@ -17,7 +17,7 @@ const cadastrarEndereco = async (request, response) => {
 
   if (enderecoJaExiste) {
     return response.status(400).json({
-      error: 'Endereço já cadastrado!'
+      error: "Endereço já cadastrado!"
     })
   }
 
