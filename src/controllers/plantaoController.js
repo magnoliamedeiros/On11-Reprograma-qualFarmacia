@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const PlantaoSchema = require("../models/plantaoSchema")
 const FarmaciaSchema = require("../models/farmaciaSchema")
+const EnderecoSchema = require("../models/enderecoSchema")
 
 // Cadastra um plantão
 const cadastrarPlantao = async (request, response) => {
@@ -34,7 +35,7 @@ const mostrarPlantao = async (request, response) => {
     populate('farmacia').
     populate('endereco').
     exec()
-    
+
     response.status(200).json({
       success: "Plantão listados com sucesso!",
       plantao
