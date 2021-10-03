@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const PlantaoSchema = require("../models/plantaoSchema")
+const FarmaciaSchema = require("../models/farmaciaSchema")
 
 // Cadastra um plantão
 const cadastrarPlantao = async (request, response) => {
@@ -29,10 +30,12 @@ const cadastrarPlantao = async (request, response) => {
 // Retorna todos os endereços cadastrados
 const mostrarPlantao = async (request, response) => {
   try {
+    const farmacia = await FarmaciaSchema.findById({ _id: request.params.id })
     const plantao = await PlantaoSchema.find()
     response.status(200).json({
       success: "Plantão listados com sucesso!",
-      plantao
+      plantao,
+      farmacia
     })
   } catch (err) {
     response.status(500).json({
