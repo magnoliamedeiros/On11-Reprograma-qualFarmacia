@@ -30,12 +30,10 @@ const cadastrarPlantao = async (request, response) => {
 // Retorna todos os endereços cadastrados
 const mostrarPlantao = async (request, response) => {
   try {
-    const farmacia = await FarmaciaSchema.findById({ _id: request.params.id })
-    const plantao = await PlantaoSchema.find()
+    const plantao = await PlantaoSchema.find().populate('farmacia')
     response.status(200).json({
       success: "Plantão listados com sucesso!",
-      plantao,
-      farmacia
+      plantao
     })
   } catch (err) {
     response.status(500).json({

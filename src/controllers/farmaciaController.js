@@ -46,7 +46,7 @@ const cadastrarFarmacia = async (request, response) => {
 // Retorna todas as farmácias cadastradas
 const mostrarFarmacias = async (request, response) => {
   try {
-    const farmacias = await FarmaciaSchema.find().populate('endereco')
+    const farmacias = await FarmaciaSchema.find().populate('endereco', 'plantao')
     response.status(200).json({
       success: 'Farmácias listadas com sucesso!',
       farmacias
@@ -127,10 +127,12 @@ const mostrarFarmaciasJK = async (request, response) => {
 // Atualiza uma farmácia
 const atualizarFarmacia = async (request, response) => {
   try {
+
     const farmacia = await FarmaciaSchema.findById(request.params.id)
-    if (farmacia == null || farmacia == '') {
+
+    if (farmacia == null || farmacia == "") {
       return response.status(404).json({
-        message: 'Farmácia não encontrada!'
+        message: "Farmácia não encontrada!"
       })
     }
     if (request.body.nome != null) {
@@ -142,17 +144,30 @@ const atualizarFarmacia = async (request, response) => {
     if (request.body.whatsapp != null) {
       farmacia.whatsapp = request.body.whatsapp
     }
+    if (request.body.horarioFuncionamento != null) {
+      farmacia.horarioFuncionamento = request.body.horarioFuncionamento
+    }
     if (request.body.endereco != null) {
       farmacia.endereco = request.body.endereco
     }
     if (request.body.numero != null) {
       farmacia.numero = request.body.numero
     }
+    if (request.body.localizacao != null) {
+      farmacia.localizacao = request.body.localizacao
+    }
+    if (request.body.plantao != null) {
+      farmacia.plantao = request.body.plantao
+    }
     if (request.body.criadoEm != null) {
       farmacia.criadoEm = request.body.criadoEm
     }
     const farmaciaAtualizada = await farmacia.save()
-    response.json(farmaciaAtualizada)
+    // response.json(farmaciaAtualizada)
+    response.status(201).json({
+      success: 'Farmácia atualizada com sucesso!',
+      farmaciaAtualizada
+    })
   } catch (error) {
     response.status(500).json({ message: error.message })
   }
