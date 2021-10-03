@@ -5,19 +5,23 @@ const PlantaoSchema = require("../models/plantaoSchema")
 const cadastrarPlantao = async (request, response) => {
   const plantao = new PlantaoSchema({
     _id: new mongoose.Types.ObjectId(),
-    data: request.body.data,
+    farmacia: request.body.farmacia,
+    dataPlantao: request.body.dataPlantao,
+    horaTerminoPlantao: request.body.horaTerminoPlantao,
     criadoEm: request.body.criadoEm
   })
 
   try {
     const novoPlantao = await plantao.save()
+
     response.status(201).json({
       success: "Plantão cadastrado com sucesso!",
       novoPlantao
     })
+    
   } catch (err) {
     response.status(400).json({
-      error: err.message
+      error: err.message,
     })
   }
 }

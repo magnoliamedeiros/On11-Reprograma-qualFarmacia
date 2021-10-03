@@ -14,6 +14,10 @@ const farmaciaSchema = new mongoose.Schema({
   whatsapp: {
     type: String
   },
+  horarioFuncionamento: {
+    horaInicial: { type: String },
+    horaFinal: { type: String }
+  },
   endereco: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -22,6 +26,13 @@ const farmaciaSchema = new mongoose.Schema({
   numero: {
     type: String,
     trim: true
+  },
+  localizacao: {
+    type: String
+  },
+  plantao: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "plantao"
   },
   criadoEm: {
     type: Date,
