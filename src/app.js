@@ -21,6 +21,6 @@ app.set("json spaces", 4)
 app.use("/", index)
 app.use("/farmacias", farmacia)
 app.use("/enderecos", endereco)
-app.use("/plantoes", plantao)
+app.use("/plantao", plantao)
 
 module.exports = app
