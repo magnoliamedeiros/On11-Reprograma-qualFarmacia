@@ -10,7 +10,7 @@ const farmaciaSchema = new Schema({
     horaInicial: { type: String },
     horaFinal: { type: String }
   },
-  endereco: { type: Schema.Types.ObjectId, required: true, ref: "Endereco" },
+  endereco: { type: Schema.Types.ObjectId, required: true, ref: "endereco" },
   numero: { type: String, trim: true },
   localizacao: { type: String },
   plantao: { type: Schema.Types.ObjectId, ref: "plantao" },

@@ -10,6 +10,6 @@ const enderecoSchema = new Schema({
 
 })
 
-const enderecoCollection = mongoose.model("Endereco", enderecoSchema)
+const enderecoCollection = mongoose.model("endereco", enderecoSchema)
 
 module.exports = enderecoCollection
