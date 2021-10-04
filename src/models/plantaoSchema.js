@@ -1,8 +1,9 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema;
 
 const plantaoSchema = new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
-  farmacia: { type: mongoose.Schema.Types.ObjectId, ref: "farmacia", required: true },
+  _id: Schema.Types.ObjectId,
+  farmacia: { type: Schema.Types.ObjectId, ref: "farmacia", required: true },
   dataPlantao: {
     dataInicioPlantao: {type: String},
     dataTerminoPlantao: {type: String}
