@@ -2,11 +2,7 @@ const mongoose = require("mongoose")
 
 const plantaoSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  farmacia: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "farmacia"
-  },
+  farmacia: { type: mongoose.Schema.Types.ObjectId, ref: "farmacia", required: true },
   dataPlantao: {
     dataInicioPlantao: {type: String},
     dataTerminoPlantao: {type: String}

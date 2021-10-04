@@ -33,7 +33,7 @@ const cadastrarPlantao = async (request, response) => {
 const mostrarPlantao = async (request, response) => {
   try {
 
-    const plantao = await PlantaoSchema.find().populate("farmacia").populate("Endereco")
+    const plantao = await PlantaoSchema.find().populate("farmacia").populate("Endereco").exec()
 
     response.status(200).json({
       success: "Plantão listados com sucesso!",
