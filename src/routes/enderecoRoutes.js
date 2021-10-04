@@ -9,6 +9,9 @@ router.get("/", enderecoController.mostrarEnderecos)
 // Retorna um endereço por id
 router.get("/:id", enderecoController.getEnderecoPorId)
 
+// Rertorna um endereço por bairro
+router.get("/bairro", enderecoController.getEnderecoPorBairro)
+
 // Cadastra um endereço
 router.post("/cadastrar", enderecoController.cadastrarEndereco)
 

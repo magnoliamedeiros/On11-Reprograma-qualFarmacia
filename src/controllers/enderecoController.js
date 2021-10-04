@@ -74,6 +74,17 @@ const getEnderecoPorId = async (request, response) => {
   }
 }
 
+// Retorna endereço por bairro
+const getEnderecoPorBairro = async (request, response) => {
+  const { bairro } = request.query
+  const filtro = {}
+  if (bairro) {
+    filtro.bairro = bairro
+  }
+  const endereco = await EnderecoSchema.find(filtro)
+  return response.status(200).send(endereco)
+}
+
 // Deleta endereço
 const deletarEndereco = async (request, response) => {
 
@@ -103,13 +114,38 @@ const deletarEndereco = async (request, response) => {
 
 // Alterar endereço
 const alterarEndereco = async (request, response) => {
+  
   // Em construção
+
+  try {
+
+    const endereco = await EnderecoSchema.findById({ _id: request.params.id })
+
+    if (endereco == null || endereco == "") {
+      return response.status(404).json({
+        message: "Endereço não encontrado!"
+      })
+    }
+
+    await endereco.
+
+    response.json({
+      success: "Endereço deletado com sucesso!"
+    })
+
+  } catch (err) {
+
+    response.status(500).json({
+      error: err.message
+    })
+  }
 }
 
 module.exports = {
   cadastrarEndereco,
   mostrarEnderecos,
   getEnderecoPorId,
+  getEnderecoPorBairro,
   deletarEndereco,
   alterarEndereco
 }
