@@ -8,7 +8,7 @@ const cadastrarPlantao = async (request, response) => {
   const plantao = new PlantaoSchema({
     _id: new mongoose.Types.ObjectId(),
     farmacia: request.body.farmacia,
-    //endereco: request.body.endereco,
+    endereco: request.body.endereco,
     dataPlantao: request.body.dataPlantao,
     horarioPlantao: request.body.horarioPlantao,
     criadoEm: request.body.criadoEm
@@ -33,7 +33,7 @@ const cadastrarPlantao = async (request, response) => {
 const mostrarPlantao = async (request, response) => {
   try {
 
-    const plantao = await PlantaoSchema.find().populate({ path: 'farmacia', select: 'endereco' })
+    const plantao = await PlantaoSchema.find().populate('farmacia')
 
     response.status(200).json({
       success: "Plantão listados com sucesso!",
