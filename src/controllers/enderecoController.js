@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const EnderecoSchema = require("../models/enderecoSchema")
 
-// Cadastra um endereço
+// Cadastra endereço
 const cadastrarEndereco = async (request, response) => {
   
   const endereco = new EnderecoSchema({
@@ -34,7 +34,7 @@ const cadastrarEndereco = async (request, response) => {
   }
 }
 
-// Retorna todos os endereços cadastrados
+// Retorna todos os endereços
 const mostrarEnderecos = async (request, response) => {
   try {
     const enderecos = await EnderecoSchema.find()
@@ -49,8 +49,9 @@ const mostrarEnderecos = async (request, response) => {
   }
 }
 
-// Retorna um endereço por id
+// Retorna endereço por id
 const getEnderecoPorId = async (request, response) => {
+
   try {
 
     const endereco = await EnderecoSchema.findById({ _id: request.params.id })
@@ -64,36 +65,51 @@ const getEnderecoPorId = async (request, response) => {
     response.status(200).json(endereco)
 
   } catch (err) {
+
     response.status(404).json({
       message: "Desculpa! Não existe endereço cadastrado", 
       error: err.message
     })
+
   }
 }
 
-// Deleta um endereço
+// Deleta endereço
 const deletarEndereco = async (request, response) => {
+
   try {
+
     const endereco = await EnderecoSchema.findById({ _id: request.params.id })
+
     if (endereco == null || endereco == "") {
       return response.status(404).json({
         message: "Endereço não encontrado!"
       })
     }
+
     await endereco.remove()
+
     response.json({
       success: "Endereço deletado com sucesso!"
     })
+
   } catch (err) {
+
     response.status(500).json({
       error: err.message
     })
   }
 }
 
+// Alterar endereço
+const alterarEndereco = async (request, response) => {
+  // Em construção
+}
+
 module.exports = {
   cadastrarEndereco,
   mostrarEnderecos,
   getEnderecoPorId,
-  deletarEndereco
+  deletarEndereco,
+  alterarEndereco
 }
