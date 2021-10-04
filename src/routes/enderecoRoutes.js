@@ -7,7 +7,7 @@ const enderecoController = require("../controllers/enderecoController")
 router.get("/", enderecoController.mostrarEnderecos)
 
 // Retorna um endereço por id
-router.get("/:id", enderecoController.getById)
+router.get("/:id", enderecoController.getEnderecoPorId)
 
 // Cadastra um endereço
 router.post("/cadastrar", enderecoController.cadastrarEndereco)

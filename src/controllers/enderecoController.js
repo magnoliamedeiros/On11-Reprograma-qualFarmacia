@@ -50,18 +50,22 @@ const mostrarEnderecos = async (request, response) => {
 }
 
 // Retorna um endereço por id
-const getById = async (request, response) => {
+const getEnderecoPorId = async (request, response) => {
   try {
+
     const endereco = await EnderecoSchema.findById({ _id: request.params.id })
+    
     if (endereco == null) {
       return response.status(404).json({
         message: "Endereço não encontrado!"
       })
     }
-    response.status(200).json(farmacia)
+
+    response.status(200).json(endereco)
+
   } catch (err) {
     response.status(404).json({
-      message: "Desculpa! Não existe farmácia cadastrada para este local", 
+      message: "Desculpa! Não existe endereço cadastrado", 
       error: err.message
     })
   }
@@ -90,6 +94,6 @@ const deletarEndereco = async (request, response) => {
 module.exports = {
   cadastrarEndereco,
   mostrarEnderecos,
-  getById,
+  getEnderecoPorId,
   deletarEndereco
 }
