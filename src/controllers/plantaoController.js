@@ -8,6 +8,7 @@ const cadastrarPlantao = async (request, response) => {
   const plantao = new PlantaoSchema({
     _id: new mongoose.Types.ObjectId(),
     farmacia: request.body.farmacia,
+    endereco: request.body.endereco,
     dataPlantao: request.body.dataPlantao,
     horarioPlantao: request.body.horarioPlantao,
     criadoEm: request.body.criadoEm
