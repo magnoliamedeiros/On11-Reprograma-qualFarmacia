@@ -76,13 +76,17 @@ const getEnderecoPorId = async (request, response) => {
 
 // Retorna endereço por bairro
 const getEnderecoPorBairro = async (request, response) => {
-  const { bairro } = request.query
-  const filtro = {}
-  if (bairro) {
-    filtro.bairro = bairro
+
+  try {
+    const endereco = await EnderecoSchema.find({bairro: request.query.bairro})
+    response.status(200).json(endereco)
+  } catch (error) {
+    response.status(404).json({
+      message: "Desculpa! Não encontrado!", 
+      error: err.message
+    })
   }
-  const endereco = await EnderecoSchema.find(filtro)
-  return response.status(200).send(endereco)
+
 }
 
 // Deleta endereço
