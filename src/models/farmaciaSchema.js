@@ -6,6 +6,7 @@ const farmaciaSchema = new Schema({
   nome: { type: String, lowercase: true, trim: true, required: true },
   telefoneDeContato: {type: String },
   whatsapp: { type: String },
+  servicoDeEntrega: {type: String, enum: ['sim', 'não informado'], default: 'não informado'},
   horarioFuncionamento: {
     horaInicial: { type: String },
     horaFinal: { type: String }

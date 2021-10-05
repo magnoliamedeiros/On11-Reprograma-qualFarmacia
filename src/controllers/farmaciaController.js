@@ -14,7 +14,7 @@ const cadastrarFarmacia = async (request, response) => {
     endereco: request.body.endereco,
     numero: request.body.numero,
     localizacao: request.body.localizacao,
-    plantao: request.body.plantao,
+    // plantao: request.body.plantao,
     criadoEm: request.body.criadoEm
   })
 

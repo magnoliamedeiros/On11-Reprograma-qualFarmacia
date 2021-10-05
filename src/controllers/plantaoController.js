@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const PlantaoSchema = require("../models/plantaoSchema")
 const FarmaciaSchema = require("../models/farmaciaSchema")
-const EnderecoSchema = require("../models/enderecoSchema")
+// const EnderecoSchema = require("../models/enderecoSchema")
 
 // Cadastra um plantão
 const cadastrarPlantao = async (request, response) => {
@@ -9,7 +9,7 @@ const cadastrarPlantao = async (request, response) => {
   const plantao = new PlantaoSchema({
     _id: new mongoose.Types.ObjectId(),
     farmacia: request.body.farmacia,
-    endereco: request.body.endereco,
+    // endereco: request.body.endereco,
     dataPlantao: request.body.dataPlantao,
     horarioPlantao: request.body.horarioPlantao,
     criadoEm: request.body.criadoEm
@@ -36,22 +36,17 @@ const mostrarPlantao = async (request, response) => {
 
     const listaPlantao = await PlantaoSchema.find()
     const listaFarmacias = await FarmaciaSchema.find().populate('endereco')
-    
+
     const farmaciaPopulada = listaPlantao.map((plantao, index) => {
-     
-
-      const farmacia = listaFarmacias.find(farmacia => {
-     
-        const existeFarmacia = farmacia._id.toString() == plantao.farmacia.toString()
     
+      const farmacia = listaFarmacias.find(farmacia => {
+      
+        const existeFarmacia = farmacia._id.toString() == plantao.farmacia.toString()
         return existeFarmacia
-        
+      
       })
-     
       plantao.farmacia = farmacia
-
       return plantao
-
     });
 
     response.status(200).json({
