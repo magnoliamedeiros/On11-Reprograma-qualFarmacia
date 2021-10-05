@@ -5,6 +5,7 @@ const EnderecoSchema = require("../models/enderecoSchema")
 
 // Cadastra um plantão
 const cadastrarPlantao = async (request, response) => {
+
   const plantao = new PlantaoSchema({
     _id: new mongoose.Types.ObjectId(),
     farmacia: request.body.farmacia,
@@ -29,16 +30,35 @@ const cadastrarPlantao = async (request, response) => {
   }
 }
 
-// Retorna todos os endereços cadastrados
+// Retorna todos os plantões
 const mostrarPlantao = async (request, response) => {
   try {
 
-    const plantao = await PlantaoSchema.find().populate('farmacia')
+    const listaPlantao = await PlantaoSchema.find()
+    const listaFarmacias = await FarmaciaSchema.find().populate('endereco')
+    
+    const farmaciaPopulada = listaPlantao.map((plantao, index) => {
+     
+
+      const farmacia = listaFarmacias.find(farmacia => {
+     
+        const existeFarmacia = farmacia._id.toString() == plantao.farmacia.toString()
+    
+        return existeFarmacia
+        
+      })
+     
+      plantao.farmacia = farmacia
+
+      return plantao
+
+    });
 
     response.status(200).json({
       success: "Plantão listados com sucesso!",
-      plantao
+      plantao: farmaciaPopulada
     })
+
   } catch (err) {
     response.status(500).json({
       error: err.message
