@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const EnderecoSchema = require("../models/enderecoSchema")
+const FarmaciaSchema = require("../models/farmaciaSchema")
 
 // Cadastra endereço
 const cadastrarEndereco = async (request, response) => {
@@ -78,12 +79,23 @@ const getEnderecoPorId = async (request, response) => {
 const getEnderecoPorBairro = async (request, response) => {
 
   try {
-    const endereco = await EnderecoSchema.find({bairro: request.query.bairro})
-    response.status(200).json(endereco)
+    let {busca = ""} = request.query
+    let farmacias = await FarmaciaSchema.find().populate("endereco")
+  
+      busca = busca.toLowerCase()
+      farmacias = farmacias.filter(farmacia => {
+        let {nome, endereco: {logradouro}  } = farmacia
+        nome = nome.toLowerCase()
+        logradouro = logradouro.toLowerCase()
+        return nome.includes(busca) || logradouro.includes(busca)
+      })
+
+    response.status(200).json(farmacias)
+
   } catch (error) {
     response.status(404).json({
       message: "Desculpa! Não encontrado!", 
-      error: err.message
+      error: error.message
     })
   }
 

@@ -79,13 +79,35 @@ const getById = async (request, response) => {
 // Retorna uma farmácia por nome
 const getByNome = async (request, response) => {
   try {
-    const farmacia = await FarmaciaSchema.find({ nome: request.query.nome })
-    if (farmacia == null) {
+
+    const nomeFarmacia = request.params.nome
+    
+    const farmacias = await FarmaciaSchema.find()
+    const farmaciasEncontradas = farmacias.filter(farmacia => farmacia.nome.toLowerCase().includes(nomeFarmacia.toLowerCase()))
+
+    if (farmaciasEncontradas.length == 0) {
       return response.status(404).json({
         message: 'Farmácia não encontrada!'
       })
     }
-    response.status(200).json(farmacia)
+    response.status(200).json(farmaciasEncontradas)
+  } catch (err) {
+    response.status(500).json({
+      error: err.message
+    })
+  }
+}
+
+
+
+// Retorna uma farmácia por bairro = Parque Dourado
+const mostrarFarmaciasParqueDourado = async (request, response) => {
+  try {
+    const farmacias = await FarmaciaSchema.find().populate("endereco")  
+    const farmaciasFiltradas = farmacias.filter(farmacia => farmacia.endereco.bairro == "parque dourado")
+
+    response.status(200).json(farmaciasFiltradas)
+
   } catch (err) {
     response.status(500).json({
       error: err.message
@@ -96,28 +118,32 @@ const getByNome = async (request, response) => {
 // Retorna uma farmácia por bairro = centro
 const mostrarFarmaciasCentro = async (request, response) => {
   try {
-    const farmacias = await FarmaciaSchema.find().populate('endereco')
-    const farmaciasFiltradas = farmacias.filter(
-      farmacia => farmacia.endereco.bairro == 'centro'
-    )
+    const farmacias = await FarmaciaSchema.find().populate("endereco")
+    
+    const farmaciasFiltradas = farmacias.filter(farmacia => farmacia.endereco.bairro == "centro")
+    
+    response.status(200).json({
+      success: "Farmácias listados com sucesso!",
+      farmaciasFiltradas
+    })
 
-    response.status(200).json(farmaciasFiltradas)
   } catch (err) {
     response.status(500).json({
       error: err.message
     })
   }
 }
-
 // Retorna uma farmácia por bairro = jk
 const mostrarFarmaciasJK = async (request, response) => {
   try {
-    const farmacias = await FarmaciaSchema.find().populate('endereco')
-    const farmaciasFiltradas = farmacias.filter(
-      farmacia => farmacia.endereco.bairro == 'jk'
-    )
+    const farmacias = await FarmaciaSchema.find().populate("endereco")
+    const farmaciasFiltradas = farmacias.filter(farmacia => farmacia.endereco.bairro == "jk")
+    console.log(farmaciasFiltradas)
 
-    response.status(200).json(farmaciasFiltradas)
+    response.status(200).json({
+      success: "Farmácias listados com sucesso!",
+      farmacia: farmaciasFiltradas
+    })
   } catch (err) {
     response.status(500).json({
       error: err.message
@@ -197,6 +223,7 @@ module.exports = {
   mostrarFarmacias,
   getById,
   getByNome,
+  mostrarFarmaciasParqueDourado,
   mostrarFarmaciasCentro,
   mostrarFarmaciasJK,
   atualizarFarmacia,

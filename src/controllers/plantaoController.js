@@ -37,7 +37,7 @@ const mostrarPlantao = async (request, response) => {
     const listaPlantao = await PlantaoSchema.find()
     const listaFarmacias = await FarmaciaSchema.find().populate('endereco')
 
-    const farmaciaPopulada = listaPlantao.map((plantao, index) => {
+    const farmaciaPopulada = listaPlantao.map( (plantao, index) => {
     
       const farmacia = listaFarmacias.find(farmacia => {
       
