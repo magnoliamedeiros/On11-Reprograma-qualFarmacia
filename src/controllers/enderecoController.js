@@ -98,7 +98,6 @@ const getEnderecoPorBairro = async (request, response) => {
       error: error.message
     })
   }
-
 }
 
 // Deleta endereço

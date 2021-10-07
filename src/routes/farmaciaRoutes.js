@@ -5,11 +5,11 @@ const router = express.Router()
 // Retorna todas as farmacias
 router.get("/", farmaciaController.mostrarFarmacias)
 
-// Retorna uma farmácia por nome
-router.get("/:nome", farmaciaController.getByNome)
-
 // Retorna uma farmácia por id
 router.get("/:id", farmaciaController.getById)
+
+// Retorna uma farmácia por nome
+router.get("/:nome", farmaciaController.getByNome)
 
 // Retorna farmácias por bairro = centro
 router.get("/bairro/centro", farmaciaController.mostrarFarmaciasCentro)
