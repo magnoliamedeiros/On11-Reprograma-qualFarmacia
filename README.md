@@ -99,7 +99,7 @@ $ npm run dev
 
 | Método HTTP | endpoint                         | Descrição                                               |
 | ----------- | -------------------------------- | ------------------------------------------------------- |
-| GET         | /farmacias                       | Retorna toda as farmácias cadastradas                   |
+| GET         | /farmacias                       | Retorna todas as farmácias cadastradas                  |
 | GET         | /farmacias/:id                   | Retorna uma farmácia específica por id                  |
 | GET         | /farmacias/bairro/nome-do-bairro | Retorna as farmácias que existem no bairro especificado |
 | POST        | /farmacias/cadastrar             | Cadastra uma nova farmácia                              |
